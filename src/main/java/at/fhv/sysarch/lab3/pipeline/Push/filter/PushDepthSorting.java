@@ -9,7 +9,9 @@ import java.util.LinkedList;
 
 public class PushDepthSorting extends Push<Face, Face> {
 
-	private final LinkedList<Face> sortedFaces = new LinkedList<>(); // use a linkedlist instead of list for #removeFirst() resulting in better performance
+	//LinkedList, weil removeFirst() hier effizienter ist als bei einer normalen Liste
+	private final LinkedList<Face> sortedFaces = new LinkedList<>();
+
 
 	public PushDepthSorting(IPush<Face> successor) {
 		super(successor);

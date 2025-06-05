@@ -11,7 +11,7 @@ import com.hackoeur.jglm.Vec4;
 import javafx.scene.paint.Color;
 
 /**
- * Converts the face coordinates from clip space to screen space.
+ * Rechnet die Flächenkoordinaten in Bildschirmkoordinaten um.
  */
 public class PullScreenSpaceTransformation extends Pull<Pair<Face, Color>, Pair<Face, Color>> {
 
@@ -34,12 +34,12 @@ public class PullScreenSpaceTransformation extends Pull<Pair<Face, Color>, Pair<
             convert(f.getV1()),
             convert(f.getV2()),
             convert(f.getV3()),
-            f // normals stay the same
+            f
         );
     }
 
     private Vec4 convert(Vec4 vec) {
-        // divide by w (perspective division), then multiply with viewport matrix
+
         return screenMatrix.multiply(vec.multiply(1f / vec.getW()));
     }
 }

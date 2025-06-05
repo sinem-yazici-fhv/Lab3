@@ -10,8 +10,9 @@ import at.fhv.sysarch.lab3.pipeline.Pull.Pull;
 
 
 /**
- * Attaches the model's base color to each face for further processing.
+ * Fügt jeder Fläche die Grundfarbe des Modells hinzu.
  */
+
 public class PullModelColor extends Pull<Face, Pair<Face, Color>> {
 
     private final Color modelColor;

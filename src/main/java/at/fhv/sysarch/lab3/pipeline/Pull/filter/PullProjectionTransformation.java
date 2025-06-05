@@ -11,7 +11,7 @@ import com.hackoeur.jglm.Mat4;
 import javafx.scene.paint.Color;
 
 /**
- * Transforms each vertex of the face using the projection matrix.
+ * Wandelt die Ecken der Fläche mit der Projektionsmatrix um.
  */
 public class PullProjectionTransformation extends Pull<Pair<Face, Color>, Pair<Face, Color>> {
 

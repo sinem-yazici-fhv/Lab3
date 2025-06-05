@@ -1,7 +1,7 @@
 package at.fhv.sysarch.lab3.pipeline.Push;
-// T            ... Type of Elements in this class
-// N            ... Type of Elements in next class
-// successor    ... Next Element
+// T           ... Datentyp in dieser Klasse
+// N           ... Datentyp im nächsten Schritt
+// successor   ... Nächstes Element in der Pipeline
 public abstract class Push<T, N> implements IPush<T>{
 
     protected final IPush<N> successor;

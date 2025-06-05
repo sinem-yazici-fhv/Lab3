@@ -1,8 +1,10 @@
 package at.fhv.sysarch.lab3.pipeline.Push;
 
-// This interface will be implemented by the Pipe and the Filter. So that they can just call the push() method to push to the successor.
-// Source               -> Pipe             -> Filter           -> Pipe             -> Sink
-// successor.push()     -> successor.push() -> successor.push() -> successor.push() -> display the data
-public interface IPush/*myself off the bridge*/<E> {
+// Dieses Interface wird von Pipe und Filter genutzt,
+// damit sie die push()-Methode aufrufen können, um Daten an den Nachfolger weiterzugeben.
+// Ablauf:
+// Quelle        -> Pipe       -> Filter     -> Pipe       -> Ziel
+// push()        -> push()     -> push()     -> push()     -> Daten anzeigen
+public interface IPush<E> {
 	void push(E element);
 }

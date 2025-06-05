@@ -8,6 +8,10 @@ import at.fhv.sysarch.lab3.pipeline.Pull.Pull;
 
 import java.util.*;
 
+/**
+ * Sortiert die Flächen nach ihrer Tiefe (Z-Wert),
+ * damit weiter hinten liegende Flächen zuerst gezeichnet werden.
+ */
 
 public class PullDepthSorting extends Pull<Face, Face> {
 
@@ -19,7 +23,7 @@ public class PullDepthSorting extends Pull<Face, Face> {
 
     @Override
     public Face pull() {
-        return queue.pollFirst(); // retrieves and removes the head of the queue
+        return queue.pollFirst();
     }
 
     @Override
@@ -37,7 +41,6 @@ public class PullDepthSorting extends Pull<Face, Face> {
             unsorted.add(f);
         }
 
-        // Sort by average Z of the three vertices (descending → far to near)
         unsorted.sort((a, b) -> Double.compare(
                 averageZ(b), averageZ(a)
         ));

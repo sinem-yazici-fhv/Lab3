@@ -1,6 +1,5 @@
 package at.fhv.sysarch.lab3.pipeline.Pull.filter;
 
-
 import at.fhv.sysarch.lab3.obj.Face;
 import at.fhv.sysarch.lab3.pipeline.PipelineData;
 import at.fhv.sysarch.lab3.pipeline.data.Pair;
@@ -9,7 +8,8 @@ import at.fhv.sysarch.lab3.pipeline.Pull.Pull;
 import javafx.scene.paint.Color;
 
 /**
- * The final stage of the pull pipeline: renders the face-color pairs onto the canvas.
+ * Letzter Schritt der Pipeline: zeichnet die Flächen mit Farbe auf die Leinwand.
+
  */
 public class PullRenderer<T extends Pair<Face, Color>> extends Pull<T, T> {
 

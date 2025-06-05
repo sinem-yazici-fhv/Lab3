@@ -8,8 +8,9 @@ import at.fhv.sysarch.lab3.pipeline.Pull.Pull;
 import javafx.scene.paint.Color;
 
 /**
- * maps face to itself and its corresponding color
+ * Gibt die Fläche mit ihrer Farbe zurück.
  */
+
 public class PullLighting<T extends Pair<Face, Color>> extends Pull<T, Pair<Face, Color>> {
 
     private final PipelineData pd;

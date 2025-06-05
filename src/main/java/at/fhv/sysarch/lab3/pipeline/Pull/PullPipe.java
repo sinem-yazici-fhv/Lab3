@@ -3,8 +3,8 @@ package at.fhv.sysarch.lab3.pipeline.Pull;
 import java.util.function.Function;
 
 /**
- * A flexible PullPipe that transforms data of type I into type O using a mapping function.
- * This is required by your PullPipelineFactory which uses PullPipe with lambdas.
+ * Eine flexible PullPipe, die Daten vom Typ I in Typ O umwandelt.
+ * Wird von der PullPipelineFactory mit Lambda-Funktionen verwendet.
  */
 public class PullPipe<I, O> extends Pull<I, O> {
 

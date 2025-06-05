@@ -7,7 +7,7 @@ import at.fhv.sysarch.lab3.pipeline.Pull.IPull;
 import com.hackoeur.jglm.Mat4;
 
 /**
- * Applies rotation and model-view transformation to each face.
+ * Dreht das Modell und passt die Ansicht an.
  */
 public class PullModelViewTransformation extends Pull<Face, Face> {
 

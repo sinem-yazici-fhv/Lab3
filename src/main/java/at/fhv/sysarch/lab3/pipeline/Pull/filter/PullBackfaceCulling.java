@@ -4,11 +4,8 @@ package at.fhv.sysarch.lab3.pipeline.Pull.filter;
 import at.fhv.sysarch.lab3.obj.Face;
 import at.fhv.sysarch.lab3.pipeline.Pull.IPull;
 import at.fhv.sysarch.lab3.pipeline.Pull.Pull;
-
-
 /**
- * Removes all faces that are not visible from the current camera perspective.
- * This improves performance by skipping hidden geometry.
+ * Versteckte Flächen ausblenden, um die Leistung zu verbessern
  */
 public class PullBackfaceCulling extends Pull<Face, Face> {
 

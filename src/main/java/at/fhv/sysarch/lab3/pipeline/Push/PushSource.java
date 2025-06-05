@@ -7,6 +7,12 @@ import java.util.ArrayDeque;
 import java.util.List;
 import java.util.Queue;
 
+/**
+ * Startpunkt der Push-Pipeline.
+ * Lädt die Eingabedaten und schickt sie Schritt für Schritt an das nächste Element.
+ * push() darf hier nicht aufgerufen werden, da die Quelle nur sendet, aber nichts empfängt.
+ */
+
 public class PushSource extends Push<Face, Face> {
     private Queue<Face> sourceData = new ArrayDeque<>();
 

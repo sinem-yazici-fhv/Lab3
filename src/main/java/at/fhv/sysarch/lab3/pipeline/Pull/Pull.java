@@ -1,7 +1,8 @@
 package at.fhv.sysarch.lab3.pipeline.Pull;
-// T        ... Input of Element
-// R        ... Output of Element
-// source   ... Previous Element
+// T        ... Eingabetyp
+// R        ... Ausgabetyp
+// source   ... Vorgänger in der Pipeline (liefert die Daten)
+
 public abstract class Pull<I, O> implements IPull<O> {
 
     protected final IPull<I> source;
