@@ -15,7 +15,7 @@ public class PushPipelineFactory {
     public static AnimationTimer createPipeline(PipelineData pd) {
 
         // TODO: push from the source (model)
-        PushRenderer renderer = new PushRenderer(pd);
+        PushRenderer renderer = new PushRenderer(pd.getGraphicsContext(), pd.getRenderingMode());
 
         // TODO 7. feed into the sink (renderer)
         PushPipe<Pair<Face, Color>> toRenderer = new PushPipe<>(renderer);

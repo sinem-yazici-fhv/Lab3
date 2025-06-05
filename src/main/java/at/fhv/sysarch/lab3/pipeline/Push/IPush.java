@@ -1,4 +1,4 @@
-package at.fhv.sysarch.lab3.pipeline.push;
+package at.fhv.sysarch.lab3.pipeline.Push;
 
 // This interface will be implemented by the Pipe and the Filter. So that they can just call the push() method to push to the successor.
 // Source               -> Pipe             -> Filter           -> Pipe             -> Sink
