@@ -1,7 +1,6 @@
 package at.fhv.sysarch.lab3.pipeline.Push.filter;
 
 import at.fhv.sysarch.lab3.obj.Face;
-
 import at.fhv.sysarch.lab3.pipeline.Push.IPush;
 import at.fhv.sysarch.lab3.pipeline.Push.Push;
 import com.hackoeur.jglm.Mat4;
@@ -24,9 +23,8 @@ public class PushModelViewTransformation extends Push<Face, Face> {
 	}
 
 	private Face rotate(Face f) {
-
-		if(rotationMatrix == null) {
-			throw new IllegalStateException("a rotation matrix must be set before using this filter");
+		if (rotationMatrix == null) {
+			throw new IllegalStateException("A rotation matrix must be set before using this filter");
 		}
 
 		return new Face(
@@ -40,6 +38,7 @@ public class PushModelViewTransformation extends Push<Face, Face> {
 	}
 
 	public void updateRotationMatrix(Mat4 newRotation) {
-		rotationMatrix = viewTransform.multiply(modelTranslation).multiply(newRotation);
+		// Correct multiplication order: view * (translation * rotation)
+		rotationMatrix = viewTransform.multiply(modelTranslation.multiply(newRotation));
 	}
 }

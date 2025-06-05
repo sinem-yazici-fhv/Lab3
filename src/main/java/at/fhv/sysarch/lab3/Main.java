@@ -73,7 +73,7 @@ public class Main extends Application {
                                     .setRenderingMode(RenderingMode.FILLED)
                                     .setPerformLighting(true)
                                     .build();
-            pd4.setModelRotAxis(new Vec3(1,0,0));
+            pd4.setModelRotAxis(new Vec3(0,1,0));
 
             AnimationTimer anim1;
             AnimationTimer anim2;
