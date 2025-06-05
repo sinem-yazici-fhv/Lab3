@@ -1,13 +1,22 @@
 package at.fhv.sysarch.lab3.pipeline.Pull;
 
-public class PullPipe<T> extends Pull<T, T> {
+import java.util.function.Function;
 
-    public PullPipe(IPull<T> source) {
+/**
+ * A flexible PullPipe that transforms data of type I into type O using a mapping function.
+ * This is required by your PullPipelineFactory which uses PullPipe with lambdas.
+ */
+public class PullPipe<I, O> extends Pull<I, O> {
+
+    private final Function<I, O> mapper;
+
+    public PullPipe(IPull<I> source, Function<I, O> mapper) {
         super(source);
+        this.mapper = mapper;
     }
 
     @Override
-    public T pull() {
-        return source.pull();
+    public O pull() {
+        return mapper.apply(source.pull());
     }
 }

@@ -1,29 +1,35 @@
 package at.fhv.sysarch.lab3.pipeline.Pull;
 
-import at.fhv.sysarch.lab3.obj.Face;
-
-import java.util.ArrayDeque;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-public class PullSource extends Pull<Face, Face>{
-    private final Queue<Face> sourceData = new ArrayDeque<>();
+/**
+ * Generic source for the pull-based pipeline. It serves as the entry point that provides data to be processed.
+ */
+public class PullSource<T> extends Pull<T, T> {
+
+    private final Queue<T> dataQueue = new LinkedList<>();
 
     public PullSource() {
-        super(null);
+        super(null); // no upstream filter
     }
 
-    public void setSourceData(List<Face> sourceData) {
-        this.sourceData.addAll(sourceData);
+    /**
+     * Sets the input data that should be streamed through the pipeline.
+     */
+    public void setSourceData(List<T> input) {
+        dataQueue.clear(); // ensure fresh data
+        dataQueue.addAll(input);
     }
 
     @Override
-    public Face pull() {
-        return sourceData.poll();
+    public T pull() {
+        return dataQueue.poll();
     }
 
     @Override
     public boolean hasNext() {
-        return !sourceData.isEmpty();
+        return !dataQueue.isEmpty();
     }
 }
