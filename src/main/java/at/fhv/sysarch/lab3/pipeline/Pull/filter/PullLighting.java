@@ -1,38 +1,33 @@
 package at.fhv.sysarch.lab3.pipeline.Pull.filter;
 
-
 import at.fhv.sysarch.lab3.obj.Face;
-import javafx.scene.paint.Color;
 import at.fhv.sysarch.lab3.pipeline.PipelineData;
 import at.fhv.sysarch.lab3.pipeline.data.Pair;
-import at.fhv.sysarch.lab3.pipeline.Pull.Pull;
 import at.fhv.sysarch.lab3.pipeline.Pull.IPull;
+import at.fhv.sysarch.lab3.pipeline.Pull.Pull;
+import javafx.scene.paint.Color;
 
 /**
- * Applies simple flat shading to the given face-color pairs.
- * Modifies brightness of the color based on light direction.
+ * maps face to itself and its corresponding color
  */
-public class PullLighting extends Pull<Pair<Face, Color>, Pair<Face, Color>> {
+public class PullLighting<T extends Pair<Face, Color>> extends Pull<T, Pair<Face, Color>> {
 
     private final PipelineData pd;
 
-    public PullLighting(PipelineData pd, IPull<Pair<Face, Color>> input) {
-        super(input);
+    public PullLighting(PipelineData pd, IPull<T> source) {
+        super(source);
         this.pd = pd;
     }
 
     @Override
     public Pair<Face, Color> pull() {
-        Pair<Face, Color> original = source.pull();
-        if (original == null) return null;
+        return applyLighting(source.pull());
+    }
 
-        Face face = original.fst();
-        Color baseColor = original.snd();
-
-        float intensity = face.getN1().toVec3().dot(pd.getLightPos().getUnitVector());
-        intensity = Math.max(0, intensity); // avoid negative brightness
-
-        Color shadedColor = baseColor.deriveColor(0, 1, intensity, 1);
-        return new Pair<>(face, shadedColor);
+    private Pair<Face, Color> applyLighting(Pair<Face, Color> pair) {
+        Face f = pair.fst();
+        Color c = pair.snd();
+        float shading = f.getN1().toVec3().dot(pd.getLightPos().getUnitVector());
+        return new Pair<>(f, c.deriveColor(0, 1, shading, 1));
     }
 }
